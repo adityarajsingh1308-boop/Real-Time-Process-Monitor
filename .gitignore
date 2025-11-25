@@ -1,0 +1,16 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+*.temp
+
+# Build directories
+build/
+dist/
+*.spec
+
+# Virtual env
+venv/
+env/
