@@ -1,15 +1,59 @@
-# Real-Time-Process-Monitor
-Real-time process monitoring dashboard using Python, psutil, Tkinter &amp; Matplotlib.
-# Real-Time Process Monitoring
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![GUI](https://img.shields.io/badge/GUI-CustomTkinter-green)
+![Psutil](https://img.shields.io/badge/Psutil-5.x-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Platform](https://img.shields.io/badge/Platform-Windows%20|%20Linux-lightgrey)
 
-This project is a Python-based real-time process monitoring tool.  
-It displays CPU and memory usage, shows all active system processes,  
-and provides controls like Kill, Suspend, and Resume.
+<p align="center">
+  <img src="screenshots/dashboard.png" width="700" alt="Dashboard screenshot">
+</p>
 
-## Features
-- Real-time CPU & RAM monitoring
-- Process table with PID, Name, CPU%, Memory%
-- Buttons to Kill, Suspend & Resume processes
-- Adjustable refresh rate
+# Real-Time Process Monitor
 
-More detailed documentation will be added later.
+A polished, user-friendly desktop dashboard to monitor system resources and manage processes in real time.  
+Built with **Python**, **psutil**, **CustomTkinter** and **Matplotlib**.
+
+## 📑 Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [How It Works](#how-it-works)
+- [Future Scope](#future-scope)
+- [License](#license)
+
+---
+
+## 🔍 Project Overview
+This tool displays real-time CPU & RAM usage, shows active processes (PID, name, CPU%, RAM%) and allows process control actions (Kill, Suspend, Resume). Ideal for learning OS concepts or monitoring a development machine.
+
+---
+
+## ⚡ Features
+- 🔴 Real-time CPU & RAM monitoring (smooth animated values)  
+- 🔵 Live CPU utilization graph (historical, moving window)  
+- 🧾 Process table with PID, Process Name, CPU Usage (%) and RAM Usage (%)  
+- 🛑 Kill / ⏸ Suspend / ▶ Resume process controls  
+- ⏱ Adjustable refresh rate slider to balance load vs. responsiveness
+
+---
+
+## 🧰 Tech Stack
+- **Language:** Python 3.10+  
+- **GUI:** CustomTkinter (modern themed Tkinter)  
+- **Process info:** psutil  
+- **Plotting:** Matplotlib + FigureCanvasTkAgg  
+- **Extras:** numpy
+
+---
+
+## 🛠 Installation
+
+### Using Python script
+```bash
+git clone https://github.com/adityarajsingh1308-boop/Real-Time-Process-Monitor.git
+cd Real-Time-Process-Monitor
+pip install -r requirements.txt
+python process_monitor.py
