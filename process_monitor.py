@@ -59,7 +59,7 @@ refresh_slider.grid(row=0, column=1, padx=10, pady=10)
 table_frame = ctk.CTkFrame(app, corner_radius=15)
 table_frame.pack(padx=10, pady=10, fill="both", expand=True)
 
-columns = ("PID", "Name", "CPU (%)", "Memory (%)")
+columns = ("PID", "Process Name", "CPU Usage (%)", "RAM Usage (%)")
 tree = ttk.Treeview(table_frame, columns=columns, show="headings", height=10)
 for col in columns:
     tree.heading(col, text=col)
@@ -131,7 +131,7 @@ graph_frame = ctk.CTkFrame(app, corner_radius=15)
 graph_frame.pack(padx=10, pady=10, fill="both", expand=True)
 
 fig, ax = plt.subplots(figsize=(7, 2), dpi=100)
-ax.set_title("CPU Usage Over Time", color="white")
+ax.set_title("Real-Time CPU Utilization Graph", color="white")
 ax.set_ylim(0, 100)
 ax.set_facecolor("#202020")
 fig.patch.set_facecolor("#202020")
@@ -229,4 +229,5 @@ thread.start()
 
 # ---------------- RUN APP ----------------
 app.mainloop()
+
 
