@@ -5,7 +5,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows%20|%20Linux-lightgrey)
 
 <p align="center">
-  <img src="screenshots/dashboard.png" width="700" alt="Dashboard screenshot">
+  <img src="dashboard.png" width="700" alt="Dashboard screenshot">
 </p>
 
 # Real-Time Process Monitor
