@@ -10,7 +10,8 @@ import numpy as np
 # ---------------- SETTINGS ----------------
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
-
+# Main application window initialization
+# Using CustomTkinter for modern themed UI
 app = ctk.CTk()
 app.title("⚙️ Real-Time Process Monitor")
 app.geometry("1050x700")
@@ -74,6 +75,7 @@ button_frame = ctk.CTkFrame(app)
 button_frame.pack(pady=8)
 
 def kill_process():
+     """Terminate the selected process using psutil."""
     sel = tree.selection()
     if not sel:
         messagebox.showwarning("No Selection", "Please select a process first.")
@@ -86,6 +88,10 @@ def kill_process():
         messagebox.showerror("Error", f"Failed to terminate: {e}")
 
 def suspend_process():
+     """
+    Suspends (pauses) the selected process using psutil.
+    Useful when a process is consuming too many system resources.
+    """
     sel = tree.selection()
     if not sel:
         messagebox.showwarning("No Selection", "Please select a process first.")
@@ -98,6 +104,10 @@ def suspend_process():
         messagebox.showerror("Error", f"Failed to suspend: {e}")
 
 def resume_process():
+    """
+    Resumes a previously suspended process.
+    Restores execution of the selected PID.
+    """
     sel = tree.selection()
     if not sel:
         messagebox.showwarning("No Selection", "Please select a process first.")
@@ -138,9 +148,29 @@ canvas.get_tk_widget().pack(fill="both", expand=True)
 # ---------------- SMOOTHING FUNCTION ----------------
 def smooth_transition(current, target, alpha=0.2):
     return current + alpha * (target - current)
-
+"""
+    Smooths the CPU and Memory values so that the UI updates look animated
+    instead of jumping sharply. This creates a soft transition effect.
+    
+    Parameters:
+        current (float): current displayed value
+        target (float): real updated value from system
+        alpha (float): smoothing factor (0.0 - 1.0)
+        
+    Returns:
+        float: blended value closer to target
+    """
 # ---------------- UPDATE LOOP ----------------
 def update_stats():
+     """
+    Background thread function that continuously refreshes:
+    - CPU Usage
+    - Memory Usage
+    - Process Table (top 50 processes)
+    - Real-time CPU graph
+    
+    This function runs as a separate thread so the GUI does not freeze.
+    """
     smooth_cpu = psutil.cpu_percent(interval=None)
     smooth_mem = psutil.virtual_memory().percent
     last_table_update = time.time()
@@ -193,8 +223,10 @@ def update_stats():
             pass
 
 # ---------------- START THREAD ----------------
+# Start background thread so the GUI stays responsive
 thread = threading.Thread(target=update_stats, daemon=True)
 thread.start()
 
 # ---------------- RUN APP ----------------
 app.mainloop()
+
